@@ -27,14 +27,24 @@ sequenceDiagram
     participant PTS
     participant Elev
 
- note over PTS,Elev: 電梯在4F,AMR 在5F 要使用電梯, 確認記憶體1:3  
-        PTS->>Elev:記憶體9:1
-        Elev-->>PTS: 記憶體7:2
-        PTS->>Elev: postVehicleStatus (VEHCILE:2、Status=4...)
-        Elev-->>PTS: Response 完成登錄作業
-        PTS->>Elev: postVehicleStatus (VEHCILE:3、Status=4...)
-        Elev-->>PTS: Response 完成登錄作業
-
+ note over PTS,Elev: 電梯在4F,AMR 在5F 要使用電梯, 確認記憶體1:3(系統狀況是正常)
+        PTS->>Elev:記憶體9:1 AMR取控制權
+        Elev-->>PTS: 記憶體7:2 已取得控制權
+        PTS->>Elev: 記憶體10:6(物理樓層5F)
+        Elev-->>PTS: 記憶體3:2(電梯自主開門到底, 但是不保持常開)
+        PTS->>Elev: 記憶體11:1 (讓門保持常開)
+        Elev-->>PTS:（保持電梯門常開）　　
+        PTS->>Elev: AMR 進入電梯後，記憶體11:2 (下電梯關門)
+        Elev-->>PTS: 記憶體3:4(電梯關門到底)
+        PTS->>Elev: 記憶體11:0 (清空)
+ note over PTS,Elev: 電梯移動中到達指定樓層後
+　　　　　Elev-->>PTS: 記憶體3:2(電梯自主開門到底, 但是不保持常開)
+        PTS->>Elev: 記憶體11:1 (讓門保持常開)
+        Elev-->>PTS:（保持電梯門常開）　　
+        PTS->>Elev: AMR 離開電梯後，記憶體11:2 (下電梯關門)
+        Elev-->>PTS: 記憶體3:4(電梯關門到底)
+        PTS->>Elev: 記憶體11:0 (清空), 釋放控制權　記憶體9:0
+　　　　　
 ```
 
 
