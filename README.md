@@ -4,7 +4,7 @@
 ```mermaid
 sequenceDiagram
 
-    participant PTS
+    participant PTS 
     participant Elev
 
     note over PTS,Elev: 程式啟動，就開始跳心跳
