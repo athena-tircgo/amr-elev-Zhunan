@@ -9,13 +9,13 @@ sequenceDiagram
 
     note over PTS,Elev: 程式啟動跳心跳
         PTS->>Elev: 記憶體12:1
-        Elev-->>PTS: 記憶體8:1
+        Elev-->>PTS: 監控記憶體8:1
         PTS->>Elev: 記憶體12:0
-        Elev-->>PTS: 記憶體8:0
+        Elev-->>PTS: 監控記憶體8:0
         PTS->>Elev: 記憶體12:1
-        Elev-->>PTS: 記憶體8:1
+        Elev-->>PTS: 監控記憶體8:1
         PTS->>Elev: 記憶體12:0
-        Elev-->>PTS: 記憶體8:0
+        Elev-->>PTS: 監控記憶體8:0
 
    
 
@@ -43,7 +43,7 @@ sequenceDiagram
         Elev-->>PTS:（保持電梯門常開直到收到關門指令）　　　
         PTS->>Elev: AMR 離開電梯後，記憶體11:2 (下電梯關門)
         Elev-->>PTS: 監控記憶體3:4(電梯關門到底)
-        PTS->>Elev: 記憶體11:0 (清空), 釋放控制權　<br>記憶體9:0 
+        PTS->>Elev: 記憶體11:0 (清空)　<br>　記憶體9:0（釋放控制權）
 　　　　　
 ```
 
