@@ -28,22 +28,22 @@ sequenceDiagram
     participant Elev
 
  note over PTS,Elev: 電梯在4F,AMR 在5F 要使用電梯, 確認記憶體1:3(系統狀況是正常)
-        PTS->>Elev:記憶體9:1 AMR取控制權
-        Elev-->>PTS: 記憶體7:2 已取得控制權
-        PTS->>Elev: 記憶體10:6(物理樓層5F)
-        Elev-->>PTS: 記憶體3:2(電梯自主開門到底, 但是不保持常開)
+        PTS->>Elev:記憶體9:1 (AMR要取控制權)
+        Elev-->>PTS:監控記憶體7：2 (已取得控制權)
+        PTS->>Elev: 記憶體10:6(AMR 要在5F上車)
+        Elev-->>PTS:監控記憶體4:6 (是否已經到達5F) <BR> 監控記憶體3:2(電梯開門到底)
         PTS->>Elev: 記憶體11:1 (讓門保持常開)
-        Elev-->>PTS:（保持電梯門常開）　　
+        Elev-->>PTS:（保持電梯門常開直到收到關門指令）　　
         PTS->>Elev: AMR 進入電梯後，記憶體11:2 (下電梯關門)
-        Elev-->>PTS: 記憶體3:4(電梯關門到底)
+        Elev-->>PTS: 監控記憶體3:4(電梯關門到底)
         PTS->>Elev: 記憶體11:0 (清空)
- note over PTS,Elev: 電梯移動中到達指定樓層後
-　　　　　Elev-->>PTS: 記憶體3:2(電梯自主開門到底, 但是不保持常開)
+ note over PTS,Elev: 電梯移動中，到達4F
+　　　　　Elev-->>PTS: 監控記憶體4:5 (是否已經到達4F) <BR> 監控記憶體3:2(電梯開門到底)
         PTS->>Elev: 記憶體11:1 (讓門保持常開)
-        Elev-->>PTS:（保持電梯門常開）　　
+        Elev-->>PTS:（保持電梯門常開直到收到關門指令）　　　
         PTS->>Elev: AMR 離開電梯後，記憶體11:2 (下電梯關門)
-        Elev-->>PTS: 記憶體3:4(電梯關門到底)
-        PTS->>Elev: 記憶體11:0 (清空), 釋放控制權　記憶體9:0
+        Elev-->>PTS: 監控記憶體3:4(電梯關門到底)
+        PTS->>Elev: 記憶體11:0 (清空), 釋放控制權　<br>記憶體9:0 
 　　　　　
 ```
 
