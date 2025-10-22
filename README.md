@@ -10,7 +10,7 @@ sequenceDiagram
     note over PTS,Elev: 程式啟動跳心跳
         PTS->>Elev: 12:1
         Elev-->>PTS: 8:1
-        PTS->Elev: 12:0
+        PTS->>Elev: 12:0
         Elev-->>PTS: 8:0
         PTS->>Elev: 12:1
         Elev-->>PTS: 8:1
