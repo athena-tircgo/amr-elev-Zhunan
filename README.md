@@ -7,7 +7,7 @@ sequenceDiagram
     participant PTS
     participant Elev
 
-    note over PTS,Elev: 程式啟動跳心跳
+    note over PTS,Elev: 程式啟動，就開始跳心跳
         PTS->>Elev: 記憶體12:1
         Elev-->>PTS: 監控記憶體8:1
         PTS->>Elev: 記憶體12:0
