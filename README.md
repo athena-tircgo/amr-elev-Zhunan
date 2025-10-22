@@ -27,8 +27,8 @@ sequenceDiagram
     participant PTS
     participant Elev
 
- note over PTS,Elev: 電梯在4F,AMR 在5F 要使用電梯, 確認記憶體1:3(系統狀況是正常)
-        PTS->>Elev:記憶體9:1 (AMR要取控制權)
+ note over PTS,Elev: 電梯在4F,AMR 在5F 要使用電梯
+        PTS->>Elev:監控記憶體1:3(系統狀況是正常)　<br>記憶體9:1 (AMR要取控制權)
         Elev-->>PTS:監控記憶體7：2 (已取得控制權)
         PTS->>Elev: 記憶體10:6(AMR 要在5F上車)
         Elev-->>PTS:監控記憶體4:6 (是否已經到達5F) <BR> 監控記憶體3:2(電梯開門到底)
